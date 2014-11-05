@@ -75,11 +75,13 @@ app.controller("SubmitAnswerController", ['$routeParams', 'Answer', '$location',
             if (data.stat) {
                 alert('Yeah Right!');
                 $location.url('/profile');
-            } else {
-                alert('Incorrect Answer. Try again!');
             }
         }, function(error) {
-            alert(error.status + " " + error.statusText + ": " + error.data);
+            if (error.status == 406) {
+                alert('Incorrect Answer. Try again!');
+            } else {
+                alert(error.status + " " + error.statusText + ": " + error.data);
+            }
         });
     };
 }]);

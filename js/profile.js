@@ -21,7 +21,7 @@
 
 var app = angular.module('profile', ['services']);
 
-var setup = function(profileState) {
+var setup = function(buttonwrapper, profileState) {
     buttonwrapper.level = profileState.level;
     buttonwrapper.questions = profileState.levelquestions;
     buttonwrapper.qimage = function(question) {
@@ -69,13 +69,13 @@ app.controller("ProfileController", ['$location','Profile', 'Advance', function(
                 {qno: 22, qstate: 2, qvalue: 100}
             ]
         };
-        setup(profileState);
+        setup(buttonwrapper, profileState);
     };
 
     var future = profile.invoke().$promise;
     future.then(function(data) {
         var profileState = data;
-        setup(profileState);
+        setup(buttonwrapper, profileState);
     }, handler);
 }]);
 

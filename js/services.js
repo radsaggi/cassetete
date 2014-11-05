@@ -34,13 +34,13 @@ app.factory('Question', ['$resource', function($resource) {
 
 app.factory('Answer', ['$resource', function($resource) {
     return $resource('answer.php', {}, {
-      invoke: {method:'POST', params:{qno: '@qno', answer: '@answer'}, isArray:false}
+      invoke: {method:'GET', params:{qno: '@qno', answer: '@answer'}, isArray:false}
     });
 }]);
 
 app.factory('Advance', ['$resource', function($resource) {
     return $resource('advance.php', {}, {
-      invoke: {method:'POST', isArray:false}
+      invoke: {method:'GET', isArray:false}
     });
 }]);
 
